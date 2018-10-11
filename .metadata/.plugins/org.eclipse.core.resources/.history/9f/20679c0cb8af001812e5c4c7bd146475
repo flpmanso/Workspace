@@ -1,0 +1,23 @@
+package application;
+
+public class Program {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+				
+		String string = "teste de tamanho aaa";
+		System.out.println("String contem " + string.length() + " caracteres");
+		
+		for(int i = 0; i <= string.length(); i++) {
+			if(string.charAt(i) == 'a') {
+				
+				
+			}
+			System.out.println("Caracter a encontrado.");
+		}
+
+	}
+
+}

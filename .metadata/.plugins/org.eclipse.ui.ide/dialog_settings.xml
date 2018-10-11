@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="E:\Manso\Pessoal\Facul\Desenv Cliente-Servidor\String\Cliente-ServidorExercicioString-1"/>
+		<item value="E:\Manso\Pessoal\Facul\Desenv Cliente-Servidor\String"/>
+		<item value="E:\Manso\Pessoal\Facul\Desenv Cliente-Servidor\String\Exercicio 1 contador.zip"/>
+		<item value="E:\Manso\Pessoal\Facul\Arquitetura de SW\Bonus"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\Eclipse\Workstation\Biblioteca"/>
+			<item value="E:\Eclipse\Workstation"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1507906679457" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.fx.ide.jdt.ui.javafx" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.fx.ide"/>
+		</list>
+	</section>
+</section>

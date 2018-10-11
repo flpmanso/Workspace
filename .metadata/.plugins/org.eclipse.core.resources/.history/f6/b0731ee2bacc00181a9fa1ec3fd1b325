@@ -1,0 +1,50 @@
+package controller;
+
+import java.util.ResourceBundle;
+
+import javax.print.DocFlavor.URL;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import persistence.AlunoDAO;
+
+public class AlunoController implements Initializable{
+
+    @FXML
+    private TextField txtID;
+
+    @FXML
+    private TextField txtMatricula;
+
+    @FXML
+    private TextField txtNome;
+
+    @FXML
+    private TextField txtDataNascimento;
+
+    @FXML
+    private Button btnAvancar;
+
+   
+
+	@FXML
+	void btnAvancarOnAction(ActionEvent event) {
+
+		String matricula = txtMatricula.getText();
+		String nome = txtNome.getText();
+		String data = txtDataNascimento.getText();
+		
+		AlunoDAO.inserir(conn);
+		
+	}
+
+	@Override
+	public void initialize(java.net.URL location, ResourceBundle resources) {
+		
+		
+	}
+
+}

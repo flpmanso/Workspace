@@ -1,0 +1,26 @@
+package controller;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+public class AlunoController {
+
+    @FXML
+    private TextField txtMatricula;
+
+    @FXML
+    private TextField txtNome;
+
+    @FXML
+    private TextField txtMensalidade;
+
+    @FXML
+    private Button btnValidar;
+
+    @FXML
+    void btnValidarOnAction(ActionEvent event) {
+
+    }
+
+}

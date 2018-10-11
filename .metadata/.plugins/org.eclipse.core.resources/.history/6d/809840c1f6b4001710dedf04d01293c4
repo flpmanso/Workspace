@@ -1,0 +1,12 @@
+
+public class Programa {
+	public static void main(String[] args) {
+		Conta minhaConta
+		minhaConta = new conta();
+		
+		minhaConta.dono = "Manso";
+		minhaConta.saldo = 203003.0;
+		
+		System.out.println("saldo atual "+ minhaConta.saldo);
+	}
+}

@@ -1,0 +1,27 @@
+package application;
+
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		
+				
+		String string = "teste de tamanho";
+		
+		System.out.println("String contem " + string.length() + " caracteres");
+		boolean teste = false;
+		for(int i = 0; i <= string.length(); i++) {
+			if(string.charAt(i) == 'a') {
+				teste = true;
+				
+			}
+			
+		}
+		
+		if(teste == true) {
+			System.out.println("Caracter a encontrado");
+		}
+	}
+
+}

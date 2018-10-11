@@ -1,0 +1,39 @@
+package entities;
+
+import java.util.Date;
+
+public class Aluno {
+	
+	public  int matricula;
+	public  String nome;
+	public  String data;
+	
+	public Aluno(int matricula2, String nome2, String data2) {
+		// TODO Auto-generated constructor stub
+	}
+	public Aluno() {
+		// TODO Auto-generated constructor stub
+	}
+	public  int getMatricula() {
+		return matricula;
+	}
+	public  void setMatricula(int matricula) {
+		Aluno.matricula = matricula;
+	}
+	public  String getNome() {
+		return nome;
+	}
+	public  void setNome(String nome) {
+		Aluno.nome = nome;
+	}
+	public  Date getData() {
+		return data;
+	}
+	public  void setData(Date data) {
+		Aluno.data = data;
+	}
+	
+	
+	
+	
+}
