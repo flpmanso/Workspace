@@ -29,23 +29,29 @@ public class AlunoController {
 	@FXML
 	void btnValidarOnAction(ActionEvent event) {
 		Alert alert;
-		if (txtMatricula.getText().length() > 0 && txtMatricula.getText().length() <= 10
-				&& txtNome.getText().length() > 0 && txtNome.getText().length() <= 50) {
-			if (decimalPattern.matcher(txtMensalidade.getText()).matches()) {
+		if (txtMatricula.getText().length() > 0 && txtMatricula.getText().length() <= 10) {
+			if (txtNome.getText().length() > 0 && txtNome.getText().length() <= 50) {
+				if (decimalPattern.matcher(txtMensalidade.getText()).matches()) {
 
-				alert = new Alert(AlertType.INFORMATION, "informações Corretas", ButtonType.OK);
+					alert = new Alert(AlertType.INFORMATION, "informações Corretas.", ButtonType.OK);
+					alert.setTitle("Atenção!");
+					alert.setHeaderText("Informação");
+					alert.show();
+				} else {
+					alert = new Alert(AlertType.INFORMATION, "Informações da mensalidade devem ser no formato decimal.", ButtonType.OK);
+					alert.setTitle("Atenção!");
+					alert.setHeaderText("Informação");
+					alert.show();
+
+				}
+			}else {
+				alert = new Alert(AlertType.INFORMATION, "Informações do nome devem conter até 50 caracteres.", ButtonType.OK);
 				alert.setTitle("Atenção!");
 				alert.setHeaderText("Informação");
 				alert.show();
-			} else {
-				alert = new Alert(AlertType.INFORMATION, "Informações incorretas", ButtonType.OK);
-				alert.setTitle("Atenção!");
-				alert.setHeaderText("Informação");
-				alert.show();
-
 			}
 		} else {
-			alert = new Alert(AlertType.INFORMATION, "Informações incorretas", ButtonType.OK);
+			alert = new Alert(AlertType.INFORMATION, "Informações de Matricula devem possir até 10 caracteres.", ButtonType.OK);
 			alert.setTitle("Atenção!");
 			alert.setHeaderText("Informação");
 			alert.show();
