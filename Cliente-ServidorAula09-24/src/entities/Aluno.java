@@ -4,13 +4,13 @@ public class Aluno {
 	
 	public int matricula;
 	public String nome;
-	public String data;
+	public String dataNascimento;
 	
-	public Aluno(int matricula, String nome, String data) {
+	public Aluno(int matricula, String nome, String dataNascimento) {
 		super();
 		this.matricula = matricula;
 		this.nome = nome;
-		this.data = data;
+		this.dataNascimento = dataNascimento;
 	}
 
 	public Aluno() {
@@ -33,12 +33,12 @@ public class Aluno {
 		this.nome = nome;
 	}
 
-	public String getData() {
-		return data;
+	public String getdataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	public void setdataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 	
 	

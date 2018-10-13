@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ResourceBundle;
 
+import entities.Aluno;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ import persistence.AlunoDAO;
 
 public class AlunoController implements Initializable {
 
+	public int i;
 	@FXML
 	private TextField txtMatricula;
 
@@ -25,6 +27,8 @@ public class AlunoController implements Initializable {
 
 	@FXML
 	private Button btnAvancar;
+	@FXML
+	private Button btnBuscar;
 
 	@FXML
 	void btnAvancarOnAction(ActionEvent event) {
@@ -42,9 +46,21 @@ public class AlunoController implements Initializable {
 
 	}
 
+	@FXML
+	void btnBuscarOnAction(ActionEvent event) {
+		
+		Aluno aluno = AlunoDAO.buscar(i);
+		txtMatricula.setText(Integer.toString(aluno.getMatricula()));
+		
+		Alert alert = new Alert(AlertType.INFORMATION, "Dado inserido com sucesso", ButtonType.OK);
+		alert.setTitle("Atenção");
+		alert.setHeaderText("Informação");
+		alert.show();
+	}
+
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
-
+		btnBuscarOnAction(null);
 	}
 
 }
