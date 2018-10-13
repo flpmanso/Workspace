@@ -1,8 +1,7 @@
 package controller;
 
 import java.util.ResourceBundle;
-
-import javax.print.DocFlavor.URL;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +13,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class AlunoController implements Initializable {
+
+	private static Pattern decimalPattern = Pattern.compile("[-]?[0-9]*(\\,[0-9]*)?");
 
 	@FXML
 	private TextField txtMatricula;
@@ -29,14 +30,41 @@ public class AlunoController implements Initializable {
 
 	@FXML
 	void btnValidarOnAction(ActionEvent event) {
+		Alert alert;
+		if (txtMatricula.getText().length() > 0 && txtMatricula.getText().length() <= 10) {
+			if (txtNome.getText().length() > 0 && txtNome.getText().length() <= 50) {
+				if (decimalPattern.matcher(txtMensalidade.getText()).matches()) {
 
+					alert = new Alert(AlertType.INFORMATION, "informações Validadas.", ButtonType.OK);
+					alert.setTitle("Atenção!");
+					alert.setHeaderText("Informação");
+					alert.show();
+				} else {
+					alert = new Alert(AlertType.INFORMATION, "Informações da mensalidade devem ser no formato decimal.", ButtonType.OK);
+					alert.setTitle("Atenção!");
+					alert.setHeaderText("Informação");
+					alert.show();
+
+				}
+			}else {
+				alert = new Alert(AlertType.INFORMATION, "Informações do nome devem conter até 50 caracteres.", ButtonType.OK);
+				alert.setTitle("Atenção!");
+				alert.setHeaderText("Informação");
+				alert.show();
+			}
+		} else {
+			alert = new Alert(AlertType.INFORMATION, "Informações de Matricula devem possir até 10 caracteres.", ButtonType.OK);
+			alert.setTitle("Atenção!");
+			alert.setHeaderText("Informação");
+			alert.show();
+		}
 	}
 
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		txtMatricula.textProperty().addListener((observa) -> {
 			if (txtMatricula.getText().length() > 10) {
-				Alert alert = new Alert(AlertType.INFORMATION, "A matricula só pode conter até 10 caracteres",
+				Alert alert = new Alert(AlertType.INFORMATION, "Informações de Matricula devem possir até 10 caracteres.",
 						ButtonType.OK);
 				alert.setTitle("Atenção");
 				alert.setHeaderText("Informação");
@@ -45,8 +73,16 @@ public class AlunoController implements Initializable {
 		});
 		txtNome.textProperty().addListener((observa) -> {
 			if (txtNome.getText().length() > 50) {
-				Alert alert = new Alert(AlertType.INFORMATION, "O nome  só pode conter até 50 caracteres",
+				Alert alert = new Alert(AlertType.INFORMATION, "Informações do nome devem conter até 50 caracteres.",
 						ButtonType.OK);
+				alert.setTitle("Atenção");
+				alert.setHeaderText("Informação");
+				alert.show();
+			}
+		});
+		txtMensalidade.textProperty().addListener((observa) -> {
+			if (!decimalPattern.matcher(txtMensalidade.getText()).matches()) {
+				Alert alert = new Alert(AlertType.INFORMATION, "Informações da mensalidade devem ser no formato decimal.", ButtonType.OK);
 				alert.setTitle("Atenção");
 				alert.setHeaderText("Informação");
 				alert.show();
