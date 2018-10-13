@@ -6,27 +6,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import entities.PessoaFisica;
 
 public class PessoaFisicaDAO {
 	
-	private static String path = "E:\\Manso\\Pessoal\\Facul\\Desenv Cliente-Servidor\\Aula07\\PessoaFisica.csv";
-	private static String pathSaida = "E:\\Manso\\Pessoal\\Facul\\Desenv Cliente-Servidor\\Aula07\\PessoaFisica2.csv";
-	
-	
-	public static String getPath() {
-		return path;
-	}
-	public static String getPathSaida() {
-		return pathSaida;
-	}
 	
 	public static List<PessoaFisica> percorrerArquivo() {
 		
-		String path  = "E:\\Manso\\Pessoal\\Facul\\Desenv Cliente-Servidor\\Aula07\\PessoaFisica.csv";
+		String path  = "E:\\Eclipse\\Workspace\\Cliente-ServidorAula09-22\\src\\persistence\\PessoaFisica.csv";
 		List<PessoaFisica> lista = new ArrayList<>();
 		
 	try (BufferedReader lerPath = new BufferedReader(new FileReader(path))) {
