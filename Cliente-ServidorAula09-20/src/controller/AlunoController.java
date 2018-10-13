@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.regex.Pattern;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,6 +11,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class AlunoController {
+
+	private static Pattern decimalPattern = Pattern.compile("[0-9]*\\,[0-9]*?");
 
 	@FXML
 	private TextField txtMatricula;
@@ -27,16 +31,18 @@ public class AlunoController {
 		Alert alert;
 		if (txtMatricula.getText().length() > 0 && txtMatricula.getText().length() <= 10
 				&& txtNome.getText().length() > 0 && txtNome.getText().length() <= 50) {
-			try {
+			if (decimalPattern.matcher(txtMensalidade.getText()).matches()) {
+
 				alert = new Alert(AlertType.INFORMATION, "informações Corretas", ButtonType.OK);
 				alert.setTitle("Atenção!");
 				alert.setHeaderText("Informação");
 				alert.show();
-			} catch (Exception e) {
+			} else {
 				alert = new Alert(AlertType.INFORMATION, "Informações incorretas", ButtonType.OK);
 				alert.setTitle("Atenção!");
 				alert.setHeaderText("Informação");
 				alert.show();
+
 			}
 		} else {
 			alert = new Alert(AlertType.INFORMATION, "Informações incorretas", ButtonType.OK);
