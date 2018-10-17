@@ -1,4 +1,3 @@
-/application/
-/controller/
-/entities/
+/service/
+/view/
 /persistence/

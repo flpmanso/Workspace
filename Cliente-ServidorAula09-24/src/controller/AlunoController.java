@@ -49,7 +49,9 @@ public class AlunoController implements Initializable {
 	@FXML
 	void btnBuscarOnAction(ActionEvent event) {
 		
-		Aluno aluno = AlunoDAO.buscar(i);
+		
+		
+		Aluno aluno = (Aluno) AlunoDAO.buscar(i);
 		txtMatricula.setText(Integer.toString(aluno.getMatricula()));
 		
 		Alert alert = new Alert(AlertType.INFORMATION, "Dado inserido com sucesso", ButtonType.OK);
