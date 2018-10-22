@@ -13,7 +13,7 @@ public class FolhaDePagamento {
 
 		System.out.println("informe o salario: ");
 		double salario = sc.nextDouble();
-		Pessoa pessoa;
+		Bonificacao pessoa;
 
 		System.out.println("\nQual o cargo do funcionario?\n" + "1 - Funcionario \n" + "2 - Coordenador \n"
 				+ "3 - Diretor \n" + "4 - Presidente.\n ");

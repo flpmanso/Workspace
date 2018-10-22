@@ -1,9 +1,7 @@
 package entities;
 
-public class Funcionario implements Pessoa {
-	public String nome;
-	public double salario;
-
+public class Funcionario extends Pessoa implements Bonificacao {
+	@Override
 	public double calcularSalario(double salario) {
 		return this.salario = salario * 0.1;
 
