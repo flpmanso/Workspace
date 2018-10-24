@@ -48,8 +48,9 @@ public class main {
         
         float bonus = funcionario.CalcularBonus();
         
-        System.out.println("\n	" + funcionario.getNome() + " a sua bonificação é de R$" + bonus + "\n");
-    }
+        System.out.println("Parabéns " + funcionario.getNome() + " a sua bonificação é de R$" + bonus + "\n");
+    s.close();
+	}
     
 
 }

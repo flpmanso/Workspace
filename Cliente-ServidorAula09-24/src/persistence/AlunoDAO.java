@@ -38,7 +38,7 @@ public class AlunoDAO {
 		}
 	}
 	
-	public static Aluno buscar(int matricula) {
+	public static void buscar(int matricula) {
 		Conexao conexao = new Conexao();
 		Connection conn = conexao.obtemConexao();
 		
@@ -55,7 +55,7 @@ public class AlunoDAO {
 			
 			resultado = declara.executeQuery();
 			
-			return (Aluno) resultado;
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("excecao");
@@ -74,6 +74,6 @@ public class AlunoDAO {
 				}
 			}
 		}
-		return (Aluno) resultado;
+		
 	}
 }
