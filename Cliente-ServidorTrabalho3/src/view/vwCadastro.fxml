@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controller.CadastroController">
+   <children>
+      <Pane prefHeight="49.0" prefWidth="203.0">
+         <children>
+            <TextField fx:id="textField" layoutX="40.0" layoutY="7.0" />
+            <Label layoutX="10.0" layoutY="10.0" text="CPF" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -15,7 +15,7 @@ public class PessoaFisicaDAO {
 	
 	public static List<PessoaFisica> percorrerArquivo() {
 		
-		String path  = "E:\\Eclipse\\Workspace\\Cliente-ServidorAula09-22\\src\\persistence\\PessoaFisica.csv";
+		String path  = "E:\\Manso\\Pessoal\\Facul\\Desenv Cliente-Servidor\\Aula07\\PessoaFisica2.csv";
 		List<PessoaFisica> lista = new ArrayList<>();
 		
 	try (BufferedReader lerPath = new BufferedReader(new FileReader(path))) {

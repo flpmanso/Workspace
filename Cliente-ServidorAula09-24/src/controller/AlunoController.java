@@ -48,21 +48,24 @@ public class AlunoController implements Initializable {
 
 	@FXML
 	void btnBuscarOnAction(ActionEvent event) {
-		
-		
-		
-		Aluno aluno = (Aluno) AlunoDAO.buscar(i);
-		txtMatricula.setText(Integer.toString(aluno.getMatricula()));
-		
-		Alert alert = new Alert(AlertType.INFORMATION, "Dado inserido com sucesso", ButtonType.OK);
-		alert.setTitle("Atenção");
-		alert.setHeaderText("Informação");
-		alert.show();
+
+		if (AlunoDAO.buscar(Integer.parseInt(txtMatricula.getText())) != null) {
+			Aluno aluno = AlunoDAO.buscar(Integer.parseInt(txtMatricula.getText()));
+			txtNome.setText(aluno.getNome());
+			txtDataNascimento.setText(aluno.getdataNascimento());
+
+		} else {
+
+			Alert alert = new Alert(AlertType.INFORMATION, "NAO ENCONTRADO", ButtonType.OK);
+			alert.setTitle("Atenção");
+			alert.setHeaderText("Informação");
+			alert.show();
+		}
 	}
 
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
-		btnBuscarOnAction(null);
+		// btnBuscarOnAction(null);
 	}
 
 }

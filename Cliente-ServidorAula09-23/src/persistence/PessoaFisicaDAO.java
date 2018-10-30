@@ -14,7 +14,7 @@ public class PessoaFisicaDAO {
 
 	public static List<PessoaFisica> percorrerArquivo() {
 
-		String path = "E:\\Eclipse\\Workspace\\Cliente-ServidorAula09-23\\src\\persistence\\PessoaFisica.csv";
+		String path = "E:\\Manso\\Pessoal\\Facul\\Desenv Cliente-Servidor\\Aula07\\PessoaFisica.csv";
 		List<PessoaFisica> lista = new ArrayList<>();
 
 		try (BufferedReader lerPath = new BufferedReader(new FileReader(path))) {
@@ -58,7 +58,7 @@ public class PessoaFisicaDAO {
 	public static void escreverArquivo(int id, String cpf, String nome, String cidade, String estado, String status,
 			String telefone1, String telefone2, String telefone3) {
 
-		String pathSaida = "E:\\Eclipse\\Workspace\\Cliente-ServidorAula09-23\\src\\persistence\\PessoaFisica.csv";
+		String pathSaida = "E:\\Manso\\Pessoal\\Facul\\Desenv Cliente-Servidor\\Aula07\\PessoaFisica2.csv";
 
 		try (BufferedWriter escreverPath = new BufferedWriter(new FileWriter(pathSaida, true))) {
 
