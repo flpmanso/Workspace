@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
+<<<<<<< HEAD
+=======
+<fullyQualifiedTypeName name="entities.Funcionario"/>
+<fullyQualifiedTypeName name="entities.FuncionarioTerceiro"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="entities.ProdutoImportado"/>
+>>>>>>> d4a29d373a2cd8e664934b443d2964d5720f0437
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="entities.ProdutoUsado"/>
@@ -59,5 +66,9 @@
 <fullyQualifiedTypeName name="javafx.application.Platform"/>
 <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
 <fullyQualifiedTypeName name="javafx.fxml.Initializable"/>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="java.lang.Override"/>
+=======
+<fullyQualifiedTypeName name="controller.AlunoController"/>
+>>>>>>> d4a29d373a2cd8e664934b443d2964d5720f0437
 </qualifiedTypeNameHistroy>

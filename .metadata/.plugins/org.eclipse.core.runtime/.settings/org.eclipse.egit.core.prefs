@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+GitRepositoriesView.GitDirectories=E\:\\Eclipse\\Workspace\\Course-Java-Udemy\\.git;E\:\\Eclipse\\Workspace\\.git;E\:\\Eclipse\\Workspace\\BibliotecaManso\\.git;E\:\\Eclipse\\Workspace\\Biblioteca\\.git;
+GitRepositoriesView.GitDirectories.relative=Course-Java-Udemy\\.git;.git;BibliotecaManso\\.git;Biblioteca\\.git;
+=======
 GitRepositoriesView.GitDirectories=E\:\\Eclipse\\Workstation\\Biblioteca\\.git;E\:\\Eclipse\\Workstation\\.git;E\:\\Eclipse\\Workstation\\Course-Java-Udemy\\.git;E\:\\Eclipse\\Workstation\\BibliotecaManso\\.git;
 GitRepositoriesView.GitDirectories.relative=Biblioteca\\.git;.git;Course-Java-Udemy\\.git;BibliotecaManso\\.git;
+>>>>>>> 93673f6b57c4ce18489d082e5755e01d0388748a
 eclipse.preferences.version=1
