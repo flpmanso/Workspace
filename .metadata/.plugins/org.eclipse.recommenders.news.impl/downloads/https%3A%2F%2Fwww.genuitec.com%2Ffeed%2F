@@ -12,12 +12,24 @@
 	<atom:link href="https://www.genuitec.com/feed/" rel="self" type="application/rss+xml" />
 	<link>https://www.genuitec.com</link>
 	<description>The Cloud Control Company</description>
-	<lastBuildDate>Tue, 30 Oct 2018 05:54:26 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 07 Nov 2018 03:39:14 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.2</generator>
 	<item>
+		<title>CodeMix &#8211; Better with You!</title>
+		<link>https://www.genuitec.com/codemix-better-with-you/</link>
+		<pubDate>Thu, 01 Nov 2018 21:16:18 +0000</pubDate>
+		<dc:creator><![CDATA[Brian Fernandes]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=601870</guid>
+		<description><![CDATA[<p>Thanks to detailed feedback from our awesome users, our team has been hard at work adding stability, reliability and performance fixes, and enhancements, to CodeMix. Read on for the deets on what’s new in CodeMix over the last month.Editing &#38; ValidationWhen editing TypeScript files, error markers were sometimes not cleared when the error was fixed [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/codemix-better-with-you/">CodeMix &#8211; Better with You!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		</item>
+		<item>
 		<title>Laravel Validation in Eclipse</title>
 		<link>https://www.genuitec.com/laravel-validation-in-eclipse/</link>
 		<pubDate>Thu, 11 Oct 2018 16:23:43 +0000</pubDate>
@@ -302,24 +314,6 @@
 <p>The post <a rel="nofollow" href="https://www.genuitec.com/exciting-news-about-codemix/">Exciting News about CodeMix</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
 ]]></description>
 		</item>
-		<item>
-		<title>A Day with Dani: Digging in for Some Coding</title>
-		<link>https://www.genuitec.com/digging-in-coding/</link>
-		<pubDate>Thu, 21 Jun 2018 15:30:22 +0000</pubDate>
-		<dc:creator><![CDATA[Dani Faris]]></dc:creator>
-				<category><![CDATA[Eclipse]]></category>
-		<category><![CDATA[Genuitec]]></category>
-		<category><![CDATA[MyEclipse]]></category>
-		<category><![CDATA[Programming Tips]]></category>
-		<category><![CDATA[Webclipse]]></category>
-		<category><![CDATA[codemix]]></category>
-		<category><![CDATA[DevStyle]]></category>
-
-		<guid isPermaLink="false">https://www.genuitec.com/?p=591533</guid>
-		<description><![CDATA[<p>&#8220;Become a programmer!&#8221; &#8211; this has been my dream ever since I realized the pivotal role developing has in creating new technologies that could change the world and positively impact those around me. My name is Danielle and I am the summer intern at Genuitec! I am going on to my fourth week here and [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.genuitec.com/digging-in-coding/">A Day with Dani: Digging in for Some Coding</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
-]]></description>
-		</item>
 	</channel>
 </rss>
 
@@ -328,5 +322,5 @@ Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/pro
 
 Content Delivery Network via resources.cloud.genuitec.com
 
-Served from: www.genuitec.com @ 2018-10-30 01:04:58 by W3 Total Cache
+Served from: www.genuitec.com @ 2018-11-07 00:06:57 by W3 Total Cache
 -->
