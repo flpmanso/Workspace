@@ -1,11 +1,10 @@
 package controller;
 
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import entities.Cadastro;
+import entities.Loja;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,15 +19,15 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import persistence.CadastroDAO;
+import service.LojaService;
 
-public class CadastroController implements Initializable {
+public class LojaController implements Initializable {
 
 	URL arg0 = null;
 	ResourceBundle arg1 = null;
 
 	@FXML
-	private TableView<Cadastro> tbvCadastro;
+	private TableView<Loja> tbvCadastro;
 
 	@FXML
 	private TextField txtID;
@@ -52,36 +51,38 @@ public class CadastroController implements Initializable {
 	private Tab tabListarCadastros;
 
 	@FXML
-	private TableColumn<Cadastro, Number> tbvId;
+	private TableColumn<Loja, Number> tbvId;
 
 	@FXML
-	private TableColumn<Cadastro, String> tbvNomeLoja;
+	private TableColumn<Loja, String> tbvNomeLoja;
 
 	@FXML
-	private TableColumn<Cadastro, String> tbvResponsavel;
+	private TableColumn<Loja, String> tbvResponsavel;
 
 	@FXML
-	private TableColumn<Cadastro, String> tbvDataInauguracao;
+	private TableColumn<Loja, String> tbvDataInauguracao;
 
 	@FXML
-	private TableColumn<Cadastro, Number> tbvTamanhoLoja;
+	private TableColumn<Loja, Number> tbvTamanhoLoja;
 
 	@FXML
-	private TableColumn<Cadastro, Number> tbvValorAluguel;
+	private TableColumn<Loja, Number> tbvValorAluguel;
 
 	@FXML
 	void btnAlterarOnAction(ActionEvent event) {
 
 		try {
-			int id = Integer.parseInt(txtID.getText());
 
-			String nomeLoja = txtNome.getText();
-			String responsavel = txtResponsavel.getText();
-			Date dataInauguracao = Date.valueOf(txtDataInauguracao.getValue());
-			Double tamanhoLoja = Double.parseDouble(txtTamanhoLoja.getText());
-			Double valorAluguel = Double.parseDouble(txtValorAluguel.getText());
+			Loja loja = new Loja();
 
-			CadastroDAO.alterar(id, nomeLoja, responsavel, dataInauguracao, tamanhoLoja, valorAluguel);
+			loja.setId(Integer.parseInt(txtID.getText()));
+			loja.setNomeLoja(txtNome.getText());
+			loja.setResponsavel(txtResponsavel.getText());
+			loja.setDataInauguracao(String.valueOf(txtDataInauguracao.getValue()));
+			loja.setTamanhoLoja(Double.parseDouble(txtTamanhoLoja.getText()));
+			loja.setValorAluguel(Double.parseDouble(txtValorAluguel.getText()));
+
+			LojaService.alterar(loja);
 
 			Alert alert = new Alert(AlertType.INFORMATION, "Dados Alterados com sucesso", ButtonType.OK);
 			alert.setTitle("Atenção");
@@ -99,16 +100,18 @@ public class CadastroController implements Initializable {
 
 	@FXML
 	void btnBuscarOnAction(ActionEvent event) {
-		if (CadastroDAO.buscar(Integer.parseInt(txtID.getText())) != null) {
-			Cadastro cadastro = CadastroDAO.buscar(Integer.parseInt(txtID.getText()));
-			txtNome.setText(cadastro.getNomeLoja());
-			txtResponsavel.setText(cadastro.getResponsavel());
-			txtDataInauguracao.setValue(LocalDate.parse(cadastro.getDataInauguracao()));
-			txtTamanhoLoja.setText(String.valueOf(cadastro.getTamanhoLoja()));
-			txtValorAluguel.setText(String.valueOf(cadastro.getValorAluguel()));
+
+		if (LojaService.buscar(txtNome.getText()) != null) {
+			Loja loja = LojaService.buscar(txtNome.getText());
+			txtID.setText(Integer.toString(loja.getId()));
+			txtNome.setText(loja.getNomeLoja());
+			txtResponsavel.setText(loja.getResponsavel());
+			txtDataInauguracao.setValue(LocalDate.parse(loja.getDataInauguracao()));
+			txtTamanhoLoja.setText(String.valueOf(loja.getTamanhoLoja()));
+			txtValorAluguel.setText(String.valueOf(loja.getValorAluguel()));
 		} else {
 
-			Alert alert = new Alert(AlertType.INFORMATION, "ID informado não encontrado", ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "Nome da Loja informado não encontrado", ButtonType.OK);
 			alert.setTitle("Atenção");
 			alert.setHeaderText("Informação");
 			alert.show();
@@ -120,14 +123,23 @@ public class CadastroController implements Initializable {
 	void btnExcuirOnAction(ActionEvent event) {
 
 		try {
+			
 			int id = Integer.parseInt(txtID.getText());
 
-			CadastroDAO.deletar(id);
+			LojaService.deletar(id);
 
 			Alert alert = new Alert(AlertType.INFORMATION, "Dados Deletados com sucesso", ButtonType.OK);
 			alert.setTitle("Atenção");
 			alert.setHeaderText("Informação");
 			alert.show();
+
+			// limpar campos do pane
+			txtID.clear();
+			txtNome.clear();
+			txtResponsavel.clear();
+			txtTamanhoLoja.clear();
+			txtValorAluguel.clear();
+
 			// Atualizar TableView após Action
 			initialize(arg0, arg1);
 		} catch (Exception e) {
@@ -142,14 +154,16 @@ public class CadastroController implements Initializable {
 	void btnInserirOnAction(ActionEvent event) {
 
 		try {
-			int id = Integer.parseInt(txtID.getText());
-			String nomeLoja = txtNome.getText();
-			String responsavel = txtResponsavel.getText();
-			Date dataInauguracao = Date.valueOf(txtDataInauguracao.getValue());
-			Double tamanhoLoja = Double.parseDouble(txtTamanhoLoja.getText());
-			Double valorAluguel = Double.parseDouble(txtValorAluguel.getText());
+			Loja loja = new Loja();
 
-			CadastroDAO.inserir(id, nomeLoja, responsavel, dataInauguracao, tamanhoLoja, valorAluguel);
+			//loja.setId(Integer.parseInt(txtID.getText()));
+			loja.setNomeLoja(txtNome.getText());
+			loja.setResponsavel(txtResponsavel.getText());
+			loja.setDataInauguracao(String.valueOf(txtDataInauguracao.getValue()));
+			loja.setTamanhoLoja(Double.parseDouble(txtTamanhoLoja.getText()));
+			loja.setValorAluguel(Double.parseDouble(txtValorAluguel.getText()));
+
+			LojaService.inserir(loja);
 
 			Alert alert = new Alert(AlertType.INFORMATION, "Dados Inseridos com sucesso", ButtonType.OK);
 			alert.setTitle("Atenção");
@@ -174,13 +188,26 @@ public class CadastroController implements Initializable {
 		}
 	}
 
+	@FXML
+	void btnNovoOnAction(ActionEvent event) {
+		// Pegar a data atual local e já mostrar na tela
+		txtDataInauguracao.setValue(LocalDate.now());
+
+		// limpar campos do pane
+		txtID.clear();
+		txtNome.clear();
+		txtResponsavel.clear();
+		txtTamanhoLoja.clear();
+		txtValorAluguel.clear();
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// Inicialização mascaras
-		CadastroMascara.mascaraNumeroInteiro(txtID);
-		CadastroMascara.mascaraData(txtDataInauguracao);
-		CadastroMascara.mascaraNumero(txtTamanhoLoja);
-		CadastroMascara.mascaraNumero(txtValorAluguel);
+		LojaMascara.mascaraNumeroInteiro(txtID);
+		LojaMascara.mascaraData(txtDataInauguracao);
+		LojaMascara.mascaraNumero(txtTamanhoLoja);
+		LojaMascara.mascaraNumero(txtValorAluguel);
 
 		// Inicializar e preencher TableView
 		tbvId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
@@ -190,19 +217,13 @@ public class CadastroController implements Initializable {
 		tbvTamanhoLoja.setCellValueFactory(cellData -> cellData.getValue().tamanhoLojaProperty());
 		tbvValorAluguel.setCellValueFactory(cellData -> cellData.getValue().valorAluguelProperty());
 
-		ObservableList<Cadastro> masterData = FXCollections.observableArrayList();
+		ObservableList<Loja> masterData = FXCollections.observableArrayList();
 
-		masterData = CadastroDAO.converterArrayListToObservableList();
+		masterData = LojaService.converterArrayListToObservableList();
 
-		FilteredList<Cadastro> filteredData = new FilteredList<>(masterData, p -> true);
+		FilteredList<Loja> filteredData = new FilteredList<>(masterData, p -> true);
 
 		tbvCadastro.setItems(filteredData);
-
-		// Pegar ultio ID no BD e já mostrar na tela
-		txtID.setText(Integer.toString(CadastroDAO.pegarUltimoId()));
-
-		// Pegar a data atual local e já mostrar na tela
-		txtDataInauguracao.setValue(LocalDate.now());
 
 		// Verificar se campos Nome Loja e Responsavel vão conter < 100 caracteres
 		txtNome.textProperty().addListener((observa) -> {

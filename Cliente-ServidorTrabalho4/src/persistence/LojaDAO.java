@@ -6,32 +6,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import entities.Cadastro;
+import entities.Loja;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class CadastroDAO {
+public class LojaDAO {
 
-	public static void inserir(Integer id, String nomeLoja, String responsavel, java.sql.Date dataInauguracao,
-			double tamanhoLoja, double valorAluguel) {
+	public static void inserir(Loja loja) {
 
 		Conexao conexao = new Conexao();
 		Connection conn = conexao.obtemConexao();
 
-		String sqlInsert = "INSERT INTO cadastroloja(id, nome_loja, responsavel, data_inauguracao, tamanho_loja, valor_aluguel) VALUES (?, ?, ?, ?, ? , ?)";
+		String sqlInsert = "INSERT INTO cadastroloja(nome_loja, responsavel, data_inauguracao, tamanho_loja, valor_aluguel) VALUES (?, ?, ?, ? , ?)";
 
 		PreparedStatement declara = null;
+
 		try {
 			declara = conn.prepareStatement(sqlInsert);
 
-			declara.setInt(1, id);
-			declara.setString(2, nomeLoja);
-			declara.setString(3, responsavel);
-			declara.setDate(4, dataInauguracao);
-			declara.setDouble(5, tamanhoLoja);
-			declara.setDouble(6, valorAluguel);
+			declara.setString(1, loja.getNomeLoja());
+			declara.setString(2, loja.getResponsavel());
+			declara.setString(3, loja.getDataInauguracao());
+			declara.setDouble(4, loja.getTamanhoLoja());
+			declara.setDouble(5, loja.getValorAluguel());
 			declara.execute();
 
 		} catch (Exception e) {
@@ -47,27 +45,27 @@ public class CadastroDAO {
 		}
 	}
 
-	public static Cadastro buscar(int id) {
+	public static Loja buscar(String nomeLoja) {
 		Conexao conexao = new Conexao();
 		Connection conn = conexao.obtemConexao();
 
-		List<Cadastro> lista = new ArrayList<>();
+		List<Loja> lista = new ArrayList<>();
 
-		String sqlSelect = "SELECT * FROM cadastroloja WHERE id = ?";
+		String sqlSelect = "SELECT * FROM cadastroloja WHERE nome_loja like ?";
 
 		PreparedStatement declara = null;
 		ResultSet rs = null; // manipula resultados da query
-		Cadastro cadastro = null;
+		Loja cadastro = null;
 
 		try {
 
 			declara = conn.prepareStatement(sqlSelect);
-			declara.setInt(1, id);
+			declara.setString(1, nomeLoja);
 
 			rs = declara.executeQuery();
 
 			while (rs.next()) {
-				lista.add(new Cadastro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
+				lista.add(new Loja(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
 						rs.getDouble(6)));
 			}
 		} catch (Exception e) {
@@ -99,8 +97,7 @@ public class CadastroDAO {
 
 	}
 
-	public static void alterar(Integer id, String nomeLoja, String responsavel, java.sql.Date dataInauguracao,
-			double tamanhoLoja, double valorAluguel) {
+	public static void alterar(Loja loja) {
 
 		Conexao conexao = new Conexao();
 		Connection conn = conexao.obtemConexao();
@@ -112,13 +109,14 @@ public class CadastroDAO {
 			declara = conn.prepareStatement(sqlUpdate);
 
 			// set
-			declara.setString(1, nomeLoja);
-			declara.setString(2, responsavel);
-			declara.setDate(3, dataInauguracao);
-			declara.setDouble(4, tamanhoLoja);
-			declara.setDouble(5, valorAluguel);
+			
+			declara.setString(1, loja.getNomeLoja());
+			declara.setString(2, loja.getResponsavel());
+			declara.setString(3, loja.getDataInauguracao());
+			declara.setDouble(4, loja.getTamanhoLoja());
+			declara.setDouble(5, loja.getValorAluguel());
 			// where
-			declara.setInt(6, id);
+			declara.setInt(6, loja.getId());
 			declara.execute();
 
 		} catch (Exception e) {
@@ -162,10 +160,10 @@ public class CadastroDAO {
 		}
 	}
 
-	public static ObservableList<Cadastro> converterArrayListToObservableList() {
+	public static ObservableList<Loja> converterArrayListToObservableList() {
 		Conexao conexao = new Conexao();
 		Connection conn = conexao.obtemConexao();
-		List<Cadastro> listaCadastro = new ArrayList<>();
+		List<Loja> listaCadastro = new ArrayList<>();
 
 		String sqlSelect = "select * from cadastroloja";
 		PreparedStatement stm = null;
@@ -175,15 +173,23 @@ public class CadastroDAO {
 			stm = conn.prepareStatement(sqlSelect);
 			rs = stm.executeQuery();
 			while (rs.next()) {
-				listaCadastro.add(new Cadastro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+				listaCadastro.add(new Loja(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
 						rs.getDouble(5), rs.getDouble(6)));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e1) {
+					System.out.println(e1.getStackTrace());
+				}
+			}
 		}
 
-		ObservableList<Cadastro> listaCadastroObservable = FXCollections.observableArrayList();
+		ObservableList<Loja> listaCadastroObservable = FXCollections.observableArrayList();
 
 		for (int i = 0; listaCadastro.size() > i; i++) {
 
@@ -193,30 +199,40 @@ public class CadastroDAO {
 		return listaCadastroObservable;
 	}
 
-	public static int pegarUltimoId() {
+	public static String pegarUltimoId() {
 		Conexao conexao = new Conexao();
 		Connection conn = conexao.obtemConexao();
-		List<Cadastro> listaCadastro = new ArrayList<>();
-
-		String sqlSelect = "select * from cadastroloja";
+		
+		String sqlSelect = "SELECT LAST_INSERT_ID() as ultimoid ";
 		PreparedStatement stm = null;
 		ResultSet rs = null;
-
+		String id = "1";
 		try {
 			stm = conn.prepareStatement(sqlSelect);
 			rs = stm.executeQuery();
+			
+			//rs = stm.getGeneratedKeys();
+			
+			
 			while (rs.next()) {
-				listaCadastro.add(new Cadastro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getDouble(6)));
+				id = rs.getString(1);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e1) {
+					System.out.println(e1.getStackTrace());
+				}
+			}
 		}
 
-		List<Integer> ids = listaCadastro.stream().map(x -> x.getId()).collect(Collectors.toList());
+		
 
-		return ids.get(ids.size() - 1) + 1;
-
+		return id;
 	}
+
 }

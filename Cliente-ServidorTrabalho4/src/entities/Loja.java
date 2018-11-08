@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Cadastro {
+public class Loja {
 
 	private Integer id;
 	private String nomeLoja;
@@ -14,11 +14,11 @@ public class Cadastro {
 	private Double tamanhoLoja;
 	private Double valorAluguel;
 
-	public Cadastro() {
+	public Loja() {
 
 	}
 
-	public Cadastro(Integer id, String nomeLoja, String responsavel, String dataInauguracao, Double tamanhoLoja,
+	public Loja(Integer id, String nomeLoja, String responsavel, String dataInauguracao, Double tamanhoLoja,
 			Double valorAluguel) {
 		super();
 		this.id = id;
@@ -57,8 +57,8 @@ public class Cadastro {
 		return dataInauguracao;
 	}
 
-	public void setDataInauguracao(String dataInauguracao) {
-		this.dataInauguracao = dataInauguracao;
+	public void setDataInauguracao(String date) {
+		this.dataInauguracao = date;
 	}
 
 	public Double getTamanhoLoja() {
@@ -90,7 +90,7 @@ public class Cadastro {
 	}
 
 	public StringProperty dataInauguracaoProperty() {
-		return new SimpleStringProperty(dataInauguracao);
+		return new SimpleStringProperty(String.valueOf(dataInauguracao));
 	}
 
 	public SimpleDoubleProperty tamanhoLojaProperty() {
@@ -101,6 +101,7 @@ public class Cadastro {
 		return new SimpleDoubleProperty(valorAluguel);
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Cadastro [id=" + id + ", nomeLoja=" + nomeLoja + ", responsavel=" + responsavel + ", dataInauguracao="

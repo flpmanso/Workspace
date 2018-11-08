@@ -10,6 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			primaryStage.setTitle("Cadastro de Lojas");
 			AnchorPane root = new AnchorPane();
 			root = FXMLLoader.load(getClass().getResource("/view/vwCadastroWithTableView.fxml"));
 			Scene scene = new Scene(root);
