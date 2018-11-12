@@ -204,10 +204,10 @@ public class LojaController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// Inicialização mascaras
-		LojaMascara.mascaraNumeroInteiro(txtID);
-		LojaMascara.mascaraData(txtDataInauguracao);
-		LojaMascara.mascaraNumero(txtTamanhoLoja);
-		LojaMascara.mascaraNumero(txtValorAluguel);
+		Mascara.mascaraNumeroInteiro(txtID);
+		Mascara.mascaraData(txtDataInauguracao);
+		Mascara.mascaraNumero(txtTamanhoLoja);
+		Mascara.mascaraNumero(txtValorAluguel);
 
 		// Inicializar e preencher TableView
 		tbvId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
@@ -218,11 +218,8 @@ public class LojaController implements Initializable {
 		tbvValorAluguel.setCellValueFactory(cellData -> cellData.getValue().valorAluguelProperty());
 
 		ObservableList<Loja> masterData = FXCollections.observableArrayList();
-
 		masterData = LojaService.converterArrayListToObservableList();
-
 		FilteredList<Loja> filteredData = new FilteredList<>(masterData, p -> true);
-
 		tbvCadastro.setItems(filteredData);
 
 		// Verificar se campos Nome Loja e Responsavel vão conter < 100 caracteres

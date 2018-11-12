@@ -8,7 +8,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
-public class LojaMascara {
+public class Mascara {
 
     public static void mascaraNumeroInteiro(TextField textField){
         
